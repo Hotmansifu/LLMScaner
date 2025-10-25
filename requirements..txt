@@ -1,0 +1,20 @@
+# Git Secrets Scanner - Dependencies
+# Author: Luka Andghuladze
+
+# Core Python packages (no external dependencies for git operations)
+# Note: At least one LLM provider is required for full functionality
+# OpenAI GPT Models (What i used)
+openai>=1.0.0
+requests>=2.31.0
+
+# Anthropic Claude (Alternative)
+# anthropic>=0.21.0
+
+# Installation Instructions:
+#   pip install openai
+# Option 2: Install Anthropic only  
+#   pip install anthropic
+# Option 3: Install both (for flexibility)
+#   pip install openai anthropic
+#
+#
