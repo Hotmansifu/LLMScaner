@@ -2,6 +2,8 @@
 
 Scan Git repositories for leaked secrets using pattern matching + optional LLM analysis.
 
+Project for jetbrains internship
+
 ## Quick Install
 
 ```bash
