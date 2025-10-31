@@ -259,11 +259,6 @@ LLMScaner/
 ├── README.md                   # Documentation
 └── gitignore                   # Git ignore patterns
 ```
-
-## License
-
-MIT License - See LICENSE file for details
-
 ## Author
 
 Luka Andghuladze for JetBrains 
