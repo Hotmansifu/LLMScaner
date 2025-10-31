@@ -200,35 +200,6 @@ python3 git_secrets_scanner.py \
 
 Test repository: https://github.com/Hotmansifu/Fake-repositories-scanner
 
-## Implementation Details
-
-### Pattern Matching
-The scanner uses compiled regex patterns optimized for each secret type. Patterns are designed to balance precision and recall, with additional entropy checks for generic patterns.
-
-### Entropy Analysis
-Shannon entropy is calculated for variable assignments to identify high-randomness strings that may be secrets but don't match known patterns:
-
-```
-H(X) = -Σ p(x) * log₂(p(x))
-```
-
-Strings with entropy > 4.5 and length > 20 characters are flagged for review.
-
-### False Positive Reduction
-Built-in filters identify common false positives:
-- Test/example domains (example.com, localhost)
-- Placeholder values (your-key-here, xxx, 123456)
-- Template variables (${VAR}, %VAR%)
-- Common test patterns (test_key, fake_key, dummy)
-
-### LLM Integration
-When enabled, the LLM receives:
-- The matched snippet
-- Surrounding context (5 lines before/after)
-- File path and commit information
-
-The LLM determines if the match is a genuine secret or false positive and provides confidence levels and rationale.
-
 ## Performance Considerations
 
 | Mode | Scan Time (100 commits) | Memory Usage | Accuracy |
@@ -271,15 +242,6 @@ curl https://api.openai.com/v1/models \
 - Entropy-based detection may miss low-entropy secrets (e.g., "password123")
 - Remote repository scanning limited to most recent 100 commits by default
 
-## Future Improvements
-
-- Support for additional LLM providers (Claude, Gemini)
-- Custom pattern configuration via YAML/JSON
-- Incremental scanning (only new commits)
-- Integration with secret management systems
-- Web UI for visualization
-- Git hook pre-commit integration script
-
 ## Technical Stack
 
 - **Language**: Python 3.8+
@@ -304,8 +266,4 @@ MIT License - See LICENSE file for details
 
 ## Author
 
-Developed as part of JetBrains internship application
-
----
-
-**Note**: This tool is designed to detect accidentally committed secrets. Always rotate any exposed credentials immediately and implement proper secret management practices in production environments.
+Luka Andghuladze for JetBrains 
